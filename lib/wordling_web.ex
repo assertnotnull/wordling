@@ -29,6 +29,8 @@ defmodule WordlingWeb do
 
   def view do
     quote do
+      import Phoenix.Component
+
       use Phoenix.View,
         root: "lib/wordling_web/templates",
         namespace: WordlingWeb
@@ -45,7 +47,7 @@ defmodule WordlingWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {WordlingWeb.LayoutView, "live.html"}
+        layout: {WordlingWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end
