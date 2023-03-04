@@ -23,6 +23,16 @@ defmodule WordlingWeb.Router do
     get "/", PageController, :index
   end
 
+  pipeline :game_layout do
+    plug :put_root_layout, {WordlingWeb.LayoutView, :game}
+  end
+
+  scope "/game" do
+    pipe_through [:browser, :game_layout]
+
+    live "/", WordlingWeb.GameLive
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", WordlingWeb do
   #   pipe_through :api
