@@ -1,0 +1,21 @@
+<div class="container mx-auto">
+    <div class="hero min-h-screen">
+        board here
+        <div class="flex flex-col">
+        <%= for {row, i} <- Enum.with_index(@letters) do %>
+            <div class="flex m-auto my-1">
+                <%= if i == 2 do %>
+                    <%= live_component  WordlingWeb.Components.LetterComponent, letter: "enter" %>
+                <% end %>
+                <%= for letter <- row do %>
+                    <%= live_component  WordlingWeb.Components.LetterComponent, letter: letter %>
+                <% end %>
+                <%= if i == 2 do %>
+                    <%= live_component  WordlingWeb.Components.LetterComponent, letter: "<-" %>
+                <% end %>
+            </div>
+        <% end %>
+
+        </div>
+    </div>
+</div>
