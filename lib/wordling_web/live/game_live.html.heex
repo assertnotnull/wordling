@@ -4,7 +4,7 @@
             <div class="flex flex-col mb-10">
                 <%= for {_index, row} <- @typed do %>
                     <div class="flex m-auto my-1">
-                        <%= for {_index, letter} <- Enum.zip(1..5, row) do %>
+                        <%= for {_index, letter} <- Enum.zip(1..6, row) do %>
                             <%= live_component WordlingWeb.Components.BoxComponent, letter: letter %>
                         <% end %>
                     </div>

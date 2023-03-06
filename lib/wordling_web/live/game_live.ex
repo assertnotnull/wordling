@@ -9,7 +9,7 @@ defmodule WordlingWeb.GameLive do
           ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
           ["z", "x", "c", "v", "b", "n", "m"]
         ],
-        typed: Enum.into(1..5, %{}, fn x -> {x, Enum.into(1..5, [], fn _x -> "" end)} end)
+        typed: Enum.into(1..6, %{}, fn x -> {x, Enum.into(1..5, [], fn _x -> "" end)} end)
       )
 
     {:ok, socket}
