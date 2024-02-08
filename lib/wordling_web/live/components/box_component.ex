@@ -4,7 +4,7 @@ defmodule WordlingWeb.Components.BoxComponent do
   def render(assigns) do
     ~L"""
       <div class="table mx-1">
-        <div class="border-2 h-12 w-12 text-center table-cell align-middle uppercase">
+        <div class="rounded-md h-12 w-12 text-center table-cell align-middle uppercase bg-base-300">
           <%= @letter %>
         </div>
       </div>

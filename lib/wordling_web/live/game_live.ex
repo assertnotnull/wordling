@@ -1,6 +1,8 @@
 defmodule WordlingWeb.GameLive do
   use WordlingWeb, :live_view
 
+  alias Wordling.Wordle
+
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
@@ -13,6 +15,11 @@ defmodule WordlingWeb.GameLive do
       )
 
     {:ok, socket}
+  end
+
+  def generate_keyboard_row(letters) do
+    String.split(letters, "", trim: true)
+    |> Enum.into([], fn x -> [x, status: :unused] end)
   end
 
   def handle_event("send-letter", %{"key" => letter}, socket) do
@@ -39,6 +46,14 @@ defmodule WordlingWeb.GameLive do
       true ->
         List.replace_at(row, Enum.find_index(row, fn x -> x == "" end) - 1, "")
     end
+  end
+
+  def handle_letter("Enter", row) do
+    word = Enum.join(row, "")
+    IO.inspect(word)
+    guess = Wordle.guess(word, "later")
+    IO.inspect(guess)
+    row
   end
 
   def handle_letter(letter, row) do
